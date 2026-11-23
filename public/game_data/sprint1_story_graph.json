@@ -1,0 +1,465 @@
+{
+  "schema_version": "1.0.0",
+  "sprint": "SPRINT_1_NARRATIVE_ENGINEERING_AND_DAG",
+  "project": {
+    "title": "Enquanto o Mundo Morria - Demo",
+    "source_title": "Enquanto o mundo morria",
+    "source_author": "Natalia Oliveira517",
+    "genre": [
+      "point_and_click",
+      "psychological_horror",
+      "post_apocalyptic"
+    ],
+    "reference_style": "The Excavation of Hob's Barrow",
+    "target_engine": "Web (TypeScript + Vite + Phaser 3)",
+    "logical_resolution": {
+      "width": 320,
+      "height": 180
+    }
+  },
+  "canon_normalization": {
+    "timeline_offset": "5 meses após a Grande Ruptura (colapso do Complexo Industrial de Silo-Verde / Estrôncio-90)",
+    "entity_ids": {
+      "TEREZA": "Tereza Mayer",
+      "DILAN": "Dilan Baker",
+      "ODELIA": "Odélia",
+      "JADEN": "Jaden",
+      "AMARINA": "Amarina",
+      "MARK": "Mark",
+      "ROMENO": "Romeno Sales",
+      "CALEB": "Caleb",
+      "JOSEPH": "Joseph"
+    },
+    "world_rules": {
+      "strontium_90": "Mimetiza quimicamente o cálcio; contamina solo, tubérculos e peixes no Vale do Giz. Fervura e filtros de carvão não removem o isótopo.",
+      "bracelets": {
+        "YELLOW_ANKLE": "Recém-chegado ou contaminação residual na triagem; exige monitoramento e protocolo de vitaminas.",
+        "GREEN": "Descontaminado / integrado à comunidade.",
+        "NONE": "Cúpula / liderança (ex.: Odélia, Romeno)."
+      },
+      "farm_discipline": {
+        "daily_outside_window_minutes": 40,
+        "forbidden_zones": [
+          "ALA_LESTE",
+          "ALA_OESTE",
+          "GALPAO"
+        ],
+        "birth_policy": "Proibida; Joseph (6 anos) é a única exceção."
+      }
+    }
+  },
+  "state_machine_spec": {
+    "state_tuple": "<active_room, inventory, flags, evidences, narrative_clock>",
+    "rooms": [
+      "R01_BARRACA",
+      "R02_FLORES",
+      "R03_CABANA",
+      "R04_QUARTO",
+      "R05_CORREDOR",
+      "R06_PATIO"
+    ],
+    "initial_state": {
+      "active_room": "R01_BARRACA",
+      "inventory": [],
+      "flags": {
+        "FLAG_VIDRO_EXAMINADO": false,
+        "FLAG_KIT_PRONTO": false,
+        "FLAG_TOCOU_FLORES": false,
+        "FLAG_CAPTURA_ATO1": false,
+        "FLAG_SABE_TRAVESSIA": false,
+        "FLAG_DILAN_DISTRAIDO": false,
+        "FLAG_ATO1_COMPLETO": false,
+        "FLAG_ODELIA_VISTA": false,
+        "FLAG_REGRAS_RECEBIDAS": false,
+        "FLAG_AMARINA_EXAMINADA": false,
+        "FLAG_AMARINA_FALOU": false,
+        "FLAG_PATIO_AUDITADO": false,
+        "FLAG_JADEN_VISTO": false,
+        "FLAG_PORTA_TRANCADA": false,
+        "FLAG_DEMO_FIM": false
+      },
+      "evidences": [],
+      "narrative_clock": 40
+    }
+  },
+  "items": [
+    {
+      "id": "ITEM_BUSSOLA",
+      "name": "Bússola Antiga",
+      "act": 1,
+      "origin_room": "R01_BARRACA",
+      "consumable": false,
+      "description": "Ponteiro magnético funcional. Única orientação segura fora das estradas."
+    },
+    {
+      "id": "ITEM_COMIDA_VENCIDA",
+      "name": "Ração Vencida",
+      "act": 1,
+      "origin_room": "R01_BARRACA",
+      "consumable": false,
+      "description": "Enlatado de mercado saqueado. Mantém o corpo em pé por mais algumas horas."
+    },
+    {
+      "id": "ITEM_FLOR_VENENOSA",
+      "name": "Flor Branca e Roxa",
+      "act": 1,
+      "origin_room": "R02_FLORES",
+      "consumable": false,
+      "description": "Pétalas vibrantes e úmidas que crescem sobre a lama radioativa do Vale do Giz."
+    },
+    {
+      "id": "ITEM_PISTOLA_CROMADA",
+      "name": "Pistola Cromada",
+      "act": 1,
+      "origin_room": "R03_CABANA",
+      "consumable": false,
+      "description": "Arma de serviço de Dilan furtada do coldre sobre a mesa."
+    },
+    {
+      "id": "ITEM_FICHA_TRIAGEM",
+      "name": "Ficha Rasgada de Triagem",
+      "act": 2,
+      "origin_room": "R06_PATIO",
+      "consumable": false,
+      "description": "Registro descartado na lateral da triagem: 'Amarelos' sem reversão são transferidos ao Galpão após o ciclo de vitaminas."
+    }
+  ],
+  "evidences": [
+    {
+      "id": "K1",
+      "title": "Dentes no Lugar",
+      "trigger_node": "N07",
+      "room": "R04_QUARTO",
+      "journal_text": "Odélia não usa pulseira. Perguntou se meus dentes estavam sensíveis com um sorriso errado demais."
+    },
+    {
+      "id": "K2",
+      "title": "As Vitaminas",
+      "trigger_node": "N08",
+      "room": "R04_QUARTO",
+      "journal_text": "Me alimentam bem, aplicam 'vitaminas' sem dizer o quê e proíbem três setores inteiros. Dilan disse para não confiar nem nele."
+    },
+    {
+      "id": "K3",
+      "title": "Conta que Não Fecha",
+      "trigger_node": "N11",
+      "room": "R06_PATIO",
+      "journal_text": "Poucos animais e nenhum para procriação. Na triagem, fichas apontam transferências de 'Amarelos' para o Galpão."
+    },
+    {
+      "id": "K4",
+      "title": "A Mão de Jaden",
+      "trigger_node": "N12",
+      "room": "R06_PATIO",
+      "journal_text": "Jaden me encara do galpão com a mão enfaixada de sangue fresco. Alguém aqui dentro machucou ele. E Dilan me vigia da janela."
+    },
+    {
+      "id": "K5",
+      "title": "Como os Outros",
+      "trigger_node": "N13",
+      "room": "R06_PATIO",
+      "journal_text": "Mark deixou escapar antes de Dilan trancar a casa: ninguém aqui fica por muito tempo."
+    }
+  ],
+  "acts": [
+    {
+      "id": "ACT_1",
+      "title": "O Vale do Giz",
+      "rooms": [
+        "R01_BARRACA",
+        "R02_FLORES",
+        "R03_CABANA"
+      ],
+      "summary": "Despertar na barraca, coleta do kit de sobrevivência, contato com as flores contaminadas, captura pela patrulha e furto da pistola cromada usando o Contador Geiger como distração."
+    },
+    {
+      "id": "INTERLUDE_1",
+      "title": "Travessia e Emboscada",
+      "type": "static_cutscene_4_panels",
+      "panels": [
+        {
+          "panel": 1,
+          "title": "Sem Bússola",
+          "caption": "Sem a bússola, Tereza orienta-se pelo nascer do sol — lição número dois do pai."
+        },
+        {
+          "panel": 2,
+          "title": "O Shopping",
+          "caption": "Cartaz rasgado sob bandeira vermelha: 'Travessia ao lado leste, distribuição de comida e abrigo'. Dilan mentiu."
+        },
+        {
+          "panel": 3,
+          "title": "A Emboscada",
+          "caption": "No gramado alto, um golpe de lâmina para sobreviver — e um pano embebido sobre o rosto. 'Conseguiu tirar um de nós, boneca...'"
+        },
+        {
+          "panel": 4,
+          "title": "A Fazenda e a Triagem",
+          "caption": "Portões fechados, recepção cortês de Romeno, Geiger disparando nas botas e uma pulseira amarela no tornozelo."
+        }
+      ]
+    },
+    {
+      "id": "ACT_2",
+      "title": "Os 40 Minutos na Fazenda",
+      "rooms": [
+        "R04_QUARTO",
+        "R05_CORREDOR",
+        "R06_PATIO"
+      ],
+      "summary": "Visitas de Odélia e Dilan no quarto, imposição das 3 zonas proibidas e exploração investigativa nos 40 minutos externos até o confronto com Mark e o bloqueio do casarão."
+    },
+    {
+      "id": "ENDING_CLIFFHANGER",
+      "title": "Os Malditos Dentes Dela",
+      "type": "ending_sequence",
+      "canon_stinger": [
+        {
+          "speaker": "DILAN",
+          "line": "O que você pediu em troca, Jaden?"
+        },
+        {
+          "speaker": "JADEN",
+          "line": "Os dentes dela. Os malditos dentes dela."
+        }
+      ],
+      "closing_card": "ENQUANTO O MUNDO MORRIA — FIM DA DEMO (Continua no Wattpad)"
+    }
+  ],
+  "dag_nodes": [
+    {
+      "node_id": "N01",
+      "act": "ACT_1",
+      "room": "R01_BARRACA",
+      "preconditions": [],
+      "action": "Examinar vidro quebrado, coletar mochila e desamarrar barraca",
+      "effects": {
+        "add_items": [
+          "ITEM_BUSSOLA",
+          "ITEM_COMIDA_VENCIDA"
+        ],
+        "set_flags": {
+          "FLAG_VIDRO_EXAMINADO": true,
+          "FLAG_KIT_PRONTO": true
+        }
+      }
+    },
+    {
+      "node_id": "N02",
+      "act": "ACT_1",
+      "room": "R01_BARRACA",
+      "preconditions": [
+        "FLAG_KIT_PRONTO == true"
+      ],
+      "action": "Sair para o Leste rumo ao Vale",
+      "effects": {
+        "transition_room": "R02_FLORES"
+      }
+    },
+    {
+      "node_id": "N03",
+      "act": "ACT_1",
+      "room": "R02_FLORES",
+      "preconditions": [
+        "active_room == 'R02_FLORES'"
+      ],
+      "action": "Examinar/interagir com as flores brancas e roxas (dispara estalo de galho e fuga)",
+      "effects": {
+        "add_items": [
+          "ITEM_FLOR_VENENOSA"
+        ],
+        "set_flags": {
+          "FLAG_TOCOU_FLORES": true,
+          "FLAG_CAPTURA_ATO1": true
+        },
+        "transition_room": "R03_CABANA"
+      }
+    },
+    {
+      "node_id": "N04",
+      "act": "ACT_1",
+      "room": "R03_CABANA",
+      "preconditions": [
+        "active_room == 'R03_CABANA'"
+      ],
+      "action": "Dialogar com Dilan e pressionar sobre o refúgio ao leste ('Travessia')",
+      "effects": {
+        "set_flags": {
+          "FLAG_SABE_TRAVESSIA": true
+        }
+      }
+    },
+    {
+      "node_id": "N05",
+      "act": "ACT_1",
+      "room": "R03_CABANA",
+      "preconditions": [
+        "FLAG_SABE_TRAVESSIA == true",
+        "has_item('ITEM_FLOR_VENENOSA')"
+      ],
+      "action": "Aproximar ITEM_FLOR_VENENOSA do Contador Geiger sobre a mesa",
+      "effects": {
+        "set_flags": {
+          "FLAG_DILAN_DISTRAIDO": true
+        }
+      }
+    },
+    {
+      "node_id": "N06",
+      "act": "ACT_1",
+      "room": "R03_CABANA",
+      "preconditions": [
+        "FLAG_DILAN_DISTRAIDO == true"
+      ],
+      "action": "Furtar pistola cromada do coldre e sair pela porta",
+      "effects": {
+        "add_items": [
+          "ITEM_PISTOLA_CROMADA"
+        ],
+        "set_flags": {
+          "FLAG_ATO1_COMPLETO": true
+        },
+        "trigger_cutscene": "INTERLUDE_1",
+        "transition_room": "R04_QUARTO"
+      }
+    },
+    {
+      "node_id": "N07",
+      "act": "ACT_2",
+      "room": "R04_QUARTO",
+      "preconditions": [
+        "active_room == 'R04_QUARTO'"
+      ],
+      "action": "Concluir diálogo com Odélia (observar ausência de pulseira e menção aos dentes)",
+      "effects": {
+        "add_evidences": [
+          "K1"
+        ],
+        "set_flags": {
+          "FLAG_ODELIA_VISTA": true
+        }
+      }
+    },
+    {
+      "node_id": "N08",
+      "act": "ACT_2",
+      "room": "R04_QUARTO",
+      "preconditions": [
+        "FLAG_ODELIA_VISTA == true"
+      ],
+      "action": "Concluir cena do café da manhã, Geiger e aplicação de vitaminas com Dilan",
+      "effects": {
+        "add_evidences": [
+          "K2"
+        ],
+        "set_flags": {
+          "FLAG_REGRAS_RECEBIDAS": true
+        },
+        "set_clock": 40
+      }
+    },
+    {
+      "node_id": "N09",
+      "act": "ACT_2",
+      "room": "R04_QUARTO",
+      "preconditions": [
+        "FLAG_REGRAS_RECEBIDAS == true"
+      ],
+      "action": "Descer para R05_CORREDOR, testar portas proibidas e sair pela porta principal",
+      "effects": {
+        "transition_room": "R06_PATIO"
+      }
+    },
+    {
+      "node_id": "N10",
+      "act": "ACT_2",
+      "room": "R06_PATIO",
+      "preconditions": [
+        "active_room == 'R06_PATIO'"
+      ],
+      "action": "Examinar Amarina (aparelho auditivo) e iniciar conversa de frente",
+      "effects": {
+        "set_flags": {
+          "FLAG_AMARINA_EXAMINADA": true,
+          "FLAG_AMARINA_FALOU": true
+        },
+        "clock_delta": -10
+      }
+    },
+    {
+      "node_id": "N11",
+      "act": "ACT_2",
+      "room": "R06_PATIO",
+      "preconditions": [
+        "active_room == 'R06_PATIO'"
+      ],
+      "action": "Examinar cercado de animais e lateral da barraca de triagem",
+      "effects": {
+        "add_items": [
+          "ITEM_FICHA_TRIAGEM"
+        ],
+        "add_evidences": [
+          "K3"
+        ],
+        "set_flags": {
+          "FLAG_PATIO_AUDITADO": true
+        },
+        "clock_delta": -10
+      }
+    },
+    {
+      "node_id": "N12",
+      "act": "ACT_2",
+      "room": "R06_PATIO",
+      "preconditions": [
+        "FLAG_AMARINA_FALOU == true",
+        "FLAG_PATIO_AUDITADO == true"
+      ],
+      "action": "Examinar Jaden no batente do galpão (mão enfaixada) e olhos de Dilan na janela",
+      "effects": {
+        "add_evidences": [
+          "K4"
+        ],
+        "set_flags": {
+          "FLAG_JADEN_VISTO": true
+        },
+        "clock_delta": -10
+      }
+    },
+    {
+      "node_id": "N13",
+      "act": "ACT_2",
+      "room": "R06_PATIO",
+      "preconditions": [
+        "FLAG_JADEN_VISTO == true"
+      ],
+      "action": "Caminhar rumo à entrada do casarão (dispara confronto com Mark e intervenção de Dilan)",
+      "effects": {
+        "add_evidences": [
+          "K5"
+        ],
+        "set_flags": {
+          "FLAG_PORTA_TRANCADA": true
+        },
+        "set_clock": 0,
+        "transition_room": "R05_CORREDOR"
+      }
+    },
+    {
+      "node_id": "N14",
+      "act": "ACT_2",
+      "room": "R05_CORREDOR",
+      "preconditions": [
+        "FLAG_PORTA_TRANCADA == true",
+        "evidences.length == 5"
+      ],
+      "action": "Tentar porta principal trancada e revisar Diário completo (K1..K5)",
+      "effects": {
+        "set_flags": {
+          "FLAG_DEMO_FIM": true
+        },
+        "trigger_cutscene": "ENDING_CLIFFHANGER"
+      }
+    }
+  ]
+}

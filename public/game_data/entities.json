@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "entities": [
+    {
+      "id": "TEREZA",
+      "name": "Tereza Mayer",
+      "role": "protagonist",
+      "visual_spec": {
+        "traits": "Morena, olhos azuis, estatura baixa, aparência desgastada no Ato I e roupas limpas simples no Ato II",
+        "bracelet": { "act_1": "none", "act_2": "yellow_ankle" }
+      },
+      "voice_profile": "Seca, observadora, sarcástica sob estresse, desconfiada"
+    },
+    {
+      "id": "DILAN",
+      "name": "Dilan Baker",
+      "role": "npc_core",
+      "visual_spec": {
+        "traits": "Pele parda com cicatrizes, cabelos e olhos pretos, físico forte, blusa azul manga ajustada, calça cargo, botas pretas, colar de identificação",
+        "bracelet": "green_left_arm"
+      },
+      "voice_profile": "Ríspido, lacônico, protetor ambíguo, evita explicações diretas"
+    },
+    {
+      "id": "ODELIA",
+      "name": "Odélia",
+      "role": "npc_antagonist_subtle",
+      "visual_spec": {
+        "traits": "~40 anos, cabelo ruivo curto, magreza acentuada, olhos amendoados cor caramelo",
+        "bracelet": "none"
+      },
+      "voice_profile": "Excesso de doçura artificial com viradas abruptas para hostilidade fria"
+    },
+    {
+      "id": "JADEN",
+      "name": "Jaden",
+      "role": "npc_antagonist_direct",
+      "visual_spec": {
+        "traits": "~25 anos, cabelos loiros, olhos verdes, brinco em uma orelha, pele marcada pelo sol; no Ato II exibe mão direita enfaixada com mancha de sangue e faca",
+        "bracelet": "green"
+      },
+      "voice_profile": "Debochado, instável, predatório"
+    },
+    {
+      "id": "AMARINA",
+      "name": "Amarina",
+      "role": "npc_informant",
+      "visual_spec": {
+        "traits": "~27 anos, pele morena, cabelos lisos sob touca, olhos escuros, roupas coloridas, aparelho auditivo visível",
+        "bracelet": "green"
+      },
+      "voice_profile": "Cansada, acolhedora, cautelosa quando questionada sobre logística"
+    },
+    {
+      "id": "MARK",
+      "name": "Mark",
+      "role": "npc_catalyst",
+      "visual_spec": {
+        "traits": "Trabalhador da lavoura, vestes sujas de terra, expressão hostil",
+        "bracelet": "yellow_or_green"
+      },
+      "voice_profile": "Ressentido, explosivo, sem filtro"
+    },
+    {
+      "id": "ROMENO",
+      "name": "Romeno Sales",
+      "role": "npc_cutscene_only",
+      "visual_spec": {
+        "traits": "Meia idade, cabelos grisalhos, olhos escuros, postura autoritária",
+        "bracelet": "none"
+      },
+      "voice_profile": "Polido, paternalista, ameaçador por subtexto"
+    },
+    {
+      "id": "JOSEPH",
+      "name": "Joseph",
+      "role": "npc_ambient",
+      "visual_spec": {
+        "traits": "Menino de ~6 anos brincando na sombra próximo à lavoura",
+        "bracelet": "none"
+      },
+      "voice_profile": "Não-interativo direto (observável)"
+    }
+  ]
+}

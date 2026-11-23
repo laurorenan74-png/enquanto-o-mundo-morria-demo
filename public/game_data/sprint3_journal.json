@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "sprint": "SPRINT_3_JOURNAL_SPEC",
+  "ui_title": "Diário de Tereza",
+  "keyword_headers_by_stage": [
+    {
+      "stage": "ACT_1_START",
+      "keyword": "FOME",
+      "objective": "Pegar a mochila na barraca e seguir para o leste."
+    },
+    {
+      "stage": "ACT_1_CABIN",
+      "keyword": "CONTATO",
+      "objective": "Descobrir onde estou e conseguir uma forma de me defender antes de sair."
+    },
+    {
+      "stage": "ACT_2_ROOM",
+      "keyword": "REGRAS",
+      "objective": "Entender a rotina da Fazenda dos Inquebráveis e descer para o pátio."
+    },
+    {
+      "stage": "ACT_2_YARD",
+      "keyword": "PROTEÇÃO",
+      "objective": "Usar os 40 minutos lá fora para investigar como este lugar realmente funciona."
+    },
+    {
+      "stage": "ACT_2_CLIMAX",
+      "keyword": "A CONTA",
+      "objective": "Conectar as pistas antes que o anoitecer chegue."
+    }
+  ],
+  "entries": [
+    {
+      "id": "K1",
+      "title": "Dentes no Lugar",
+      "unlocked_by": "K1",
+      "text": "Odélia não usa pulseira. Perguntou se meus dentes estavam sensíveis com um sorriso errado demais."
+    },
+    {
+      "id": "K2",
+      "title": "As Vitaminas",
+      "unlocked_by": "K2",
+      "text": "Me alimentam bem, aplicam 'vitaminas' sem rótulo e proíbem três setores inteiros. Dilan disse para não confiar nem nele."
+    },
+    {
+      "id": "K3",
+      "title": "Conta que Não Fecha",
+      "unlocked_by": "K3",
+      "text": "Poucos animais e nenhum para procriação. Na triagem, fichas apontam transferências de 'Amarelos' para o Galpão."
+    },
+    {
+      "id": "K4",
+      "title": "A Mão de Jaden",
+      "unlocked_by": "K4",
+      "text": "Jaden me encara do galpão com a mão enfaixada de sangue fresco. Alguém aqui dentro machucou ele. E Dilan me vigia da janela."
+    },
+    {
+      "id": "K5",
+      "title": "Como os Outros",
+      "unlocked_by": "K5",
+      "text": "Mark deixou escapar antes de Dilan trancar a casa: ninguém aqui fica por muito tempo."
+    }
+  ]
+}

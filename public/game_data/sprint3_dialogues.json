@@ -1,0 +1,852 @@
+{
+  "schema_version": "1.0.0",
+  "sprint": "SPRINT_3_DIALOGUES_AND_EVENTS",
+  "cadence_rules": {
+    "max_chars_per_line": 140,
+    "style": "cinematographic_dry",
+    "fallback_responses": {
+      "wrong_item": "Não faz sentido usar isso aqui.",
+      "cant_take": "Não preciso carregar isso comigo.",
+      "default_locked": "Trancado. E eu não vou forçar a sorte."
+    }
+  },
+  "dialogues": {
+    "DLG_R01_VIDRO_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Lábios rachados, olheiras fundas, pele coberta de poeira."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Uma morena de olhos azuis difícil de não notar — e fácil de matar."
+        }
+      ],
+      "effects": {
+        "set_flags": {
+          "FLAG_VIDRO_EXAMINADO": true
+        }
+      }
+    },
+    "DLG_R01_VIDRO_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Não vou cortar a mão por vaidade."
+        }
+      ]
+    },
+    "DLG_R01_MOCHILA_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Velha, mas inteira. Comida vencida e a bússola do meu pai."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "No Vale do Giz, isso já conta como luxo."
+        }
+      ]
+    },
+    "EVT_R01_PEGAR_MOCHILA": {
+      "type": "event",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Bússola e ração no bolso. O resto não importa."
+        }
+      ],
+      "effects": {
+        "add_items": [
+          "ITEM_BUSSOLA",
+          "ITEM_COMIDA_VENCIDA"
+        ],
+        "set_flags": {
+          "FLAG_KIT_PRONTO": true
+        }
+      }
+    },
+    "DLG_R01_AMARRAS_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "A luz entra pelos rasgos da lona igual à contaminação: sempre acha um jeito."
+        }
+      ]
+    },
+    "EVT_R01_DESAMARRAR": {
+      "type": "event",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Pronto. Se eu não achar abrigo até o anoitecer, não passo de amanhã."
+        }
+      ]
+    },
+    "DLG_R01_SAIDA_BLOQUEADA": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Não saio para o leste sem a minha mochila."
+        }
+      ]
+    },
+    "DLG_R02_BARRIS_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Restos do Complexo de Silo-Verde. Estrôncio-90 não tem cheiro, nem cor."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Ele só imita o cálcio e te destrói por dentro."
+        }
+      ]
+    },
+    "DLG_R02_BARRIS_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Encostar nisso é assinar sentença."
+        }
+      ]
+    },
+    "DLG_R02_MATA_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Galhos secos e silêncio demais. Quem anda por aqui atira antes de perguntar."
+        }
+      ]
+    },
+    "DLG_R02_MATA_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Prefiro ver onde piso antes de entrar no mato."
+        }
+      ]
+    },
+    "DLG_R02_FLORES_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Flores brancas e roxas... vivas no meio dessa lama morta?"
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Alucinação de fome ou alguma aberração do solo."
+        }
+      ]
+    },
+    "EVT_R02_TOCAR_FLORES_CAPTURA": {
+      "type": "event",
+      "sfx": "SFX_BRANCH_SNAP",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Olá...?"
+        },
+        {
+          "speaker": "SFX",
+          "text": "*CLECK* — um galho seco estala na mata."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Quem tá aí?! Não quero problemas! Estou só de passagem!"
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Passos... rápido demais. Droga, o galho—"
+        }
+      ],
+      "effects": {
+        "add_items": [
+          "ITEM_FLOR_VENENOSA"
+        ],
+        "set_flags": {
+          "FLAG_TOCOU_FLORES": true,
+          "FLAG_CAPTURA_ATO1": true
+        },
+        "transition_room": "R03_CABANA"
+      }
+    },
+    "DLG_R03_INTRO_AUDIO": {
+      "type": "cutscene_black_screen",
+      "lines": [
+        {
+          "speaker": "JADEN",
+          "text": "Se o Romeno sonhar que você deu uma de caridoso, sobra pra nós dois!"
+        },
+        {
+          "speaker": "DILAN",
+          "text": "Cala a boca, Jaden. Nunca compactuei com o que vocês fazem."
+        },
+        {
+          "speaker": "JADEN",
+          "text": "Tô vazando. Essa encrenca é tua."
+        },
+        {
+          "speaker": "SFX",
+          "text": "*BATIDA SECA DE PORTA*"
+        },
+        {
+          "speaker": "DILAN",
+          "text": "Vai ficar fingindo até quando?"
+        }
+      ]
+    },
+    "DLG_R03_DILAN_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Pele limpa, uniforme inteiro, postura de quem treina pra matar."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "E não para de olhar para a porta. Ele tem medo de alguém voltar."
+        }
+      ]
+    },
+    "DLG_R03_DILAN_TREE": {
+      "type": "branching",
+      "entry_node": "ROOT",
+      "nodes": {
+        "ROOT": {
+          "speaker": "DILAN",
+          "text": "Não te deixei morrer por um resto de humanidade. Não quero saber seu nome. Só vá embora.",
+          "options": [
+            {
+              "text": "O refúgio do lado leste. Sabe onde fica?",
+              "next": "OPT_REFUGIO"
+            },
+            {
+              "text": "Meu nome é Tereza. Pelo menos me diz onde estamos.",
+              "next": "OPT_LOCAL"
+            },
+            {
+              "text": "[Encerrar conversa]",
+              "next": "END"
+            }
+          ]
+        },
+        "OPT_REFUGIO": {
+          "speaker": "DILAN",
+          "text": "Não faço ideia de que lugar é esse. Dá o fora antes que a patrulha volte.",
+          "options": [
+            {
+              "text": "Você tem onde se abrigar. Só me dá um rumo, Dilan.",
+              "next": "OPT_LOCAL"
+            }
+          ]
+        },
+        "OPT_LOCAL": {
+          "speaker": "DILAN",
+          "text": "Santo Deus... estamos na Travessia. Agora pega suas coisas e some daqui.",
+          "effects": {
+            "set_flags": {
+              "FLAG_SABE_TRAVESSIA": true
+            }
+          },
+          "next": "END"
+        }
+      }
+    },
+    "DLG_R03_MOCHILA_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Não mexeram em quase nada. Gente com sobra de suprimento."
+        }
+      ]
+    },
+    "DLG_R03_MOCHILA_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Já está pronta para sair. Só falta uma garantia de defesa."
+        }
+      ]
+    },
+    "DLG_R03_GEIGER_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Um Contador Geiger amarelo. Ligado em modo de espera."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Se isso disparar, vai fazer barulho suficiente para tirar a atenção dele da mesa."
+        }
+      ]
+    },
+    "DLG_R03_GEIGER_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Sem fonte radioativa por perto, ele só fica mudo."
+        }
+      ]
+    },
+    "EVT_R03_DISPARAR_GEIGER": {
+      "type": "event",
+      "sfx": "SFX_GEIGER_SPIKE",
+      "lines": [
+        {
+          "speaker": "SFX",
+          "text": "*CRACK-CRACK-CRACK-BEEP!*"
+        },
+        {
+          "speaker": "DILAN",
+          "text": "Que merda... o amarelinho dos infernos! Onde você pisou?!"
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Ele virou para a janela checar se ouviram. Minha chance é agora."
+        }
+      ],
+      "effects": {
+        "set_flags": {
+          "FLAG_DILAN_DISTRAIDO": true
+        }
+      }
+    },
+    "DLG_R03_COLDRE_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Pistola cromada. Meu pai me ensinou a atirar aos treze anos."
+        }
+      ]
+    },
+    "EVT_R03_FURTAR_PISTOLA": {
+      "type": "conditional_event",
+      "condition": "FLAG_DILAN_DISTRAIDO == true",
+      "if_true": {
+        "lines": [
+          {
+            "speaker": "TEREZA",
+            "text": "Leve, limpa e carregada. Desculpa, Dilan — eu devolvo um dia."
+          }
+        ],
+        "effects": {
+          "add_items": [
+            "ITEM_PISTOLA_CROMADA"
+          ]
+        }
+      },
+      "if_false": {
+        "lines": [
+          {
+            "speaker": "DILAN",
+            "text": "Nem pense em encostar nessa mesa."
+          },
+          {
+            "speaker": "TEREZA",
+            "text": "Preciso tirar os olhos dele do coldre primeiro."
+          }
+        ]
+      }
+    },
+    "DLG_R03_SAIDA_BLOQUEADA": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Não vou sair às cegas e desarmada. Preciso saber onde estou e levar proteção."
+        }
+      ]
+    },
+    "DLG_R04_CAMA_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Madeira limpa, colcha áspera. Eu esperava um cativeiro com um balde no canto."
+        }
+      ]
+    },
+    "DLG_R04_CAMA_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Já dormi o suficiente. Agora quero respostas."
+        }
+      ]
+    },
+    "DLG_R04_JANELA_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Lavouras, triagem, um galpão enorme... e poucos animais no cercado."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Animais que nem servem para procriação. Como esse povo mantém tanta saúde?"
+        }
+      ]
+    },
+    "DLG_R04_ARMARIO_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Minhas roupas estão lavadas e dobradas. Isso não foi gentileza da casa — foi o Dilan."
+        }
+      ]
+    },
+    "DLG_R04_ARMARIO_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Nada escondido aqui dentro. Só roupa limpa e silêncio."
+        }
+      ]
+    },
+    "DLG_R04_ODELIA_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Ruiva, magra, sorriso largo demais. E nenhum sinal de pulseira nos braços ou tornozelos."
+        }
+      ]
+    },
+    "DLG_R04_ODELIA_TREE": {
+      "type": "branching",
+      "entry_node": "ROOT",
+      "nodes": {
+        "ROOT": {
+          "speaker": "ODELIA",
+          "text": "Sou Odélia, esposa do Romeno. Como se sente, querida? Fraqueza? Seus dentes estão sensíveis?",
+          "options": [
+            {
+              "text": "Meus dentes estão no lugar. Por que pergunta isso?",
+              "next": "OPT_DENTES"
+            },
+            {
+              "text": "Aquele rapaz, o Jaden... ele me ameaçou na caminhonete.",
+              "next": "OPT_JADEN"
+            }
+          ]
+        },
+        "OPT_DENTES": {
+          "speaker": "ODELIA",
+          "text": "Cuidado de rotina, meu bem. Aqui protegemos quem obedece às regras.",
+          "options": [
+            {
+              "text": "E quanto ao Jaden? Ele disse coisas estranhas.",
+              "next": "OPT_JADEN"
+            }
+          ]
+        },
+        "OPT_JADEN": {
+          "speaker": "ODELIA",
+          "text": "Os remédios dele estão em falta. Não faz mal a uma mosca. APENAS NÃO INSISTA.",
+          "next": "EXIT_ODELIA"
+        },
+        "EXIT_ODELIA": {
+          "speaker": "ODELIA",
+          "text": "Oh, Dilan chegou. Sei que ficará em ótimas mãos, querida.",
+          "effects": {
+            "add_evidences": [
+              "K1"
+            ],
+            "set_flags": {
+              "FLAG_ODELIA_VISTA": true
+            }
+          },
+          "next": "END"
+        }
+      }
+    },
+    "DLG_R04_DILAN_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Pulseira verde no braço esquerdo. Tenso como se esperasse um tiro pelas costas."
+        }
+      ]
+    },
+    "DLG_R04_DILAN_TREE": {
+      "type": "branching",
+      "entry_node": "ROOT",
+      "nodes": {
+        "ROOT": {
+          "speaker": "DILAN",
+          "text": "Come, deixa eu passar o Geiger e aplicar as vitaminas. E escuta: não confie em ninguém aqui.",
+          "options": [
+            {
+              "text": "Nem em você? Você mentiu sobre a Travessia.",
+              "next": "OPT_MENTIRA"
+            },
+            {
+              "text": "Que tipo de vitaminas são essas na seringa?",
+              "next": "OPT_VITAMINAS"
+            }
+          ]
+        },
+        "OPT_MENTIRA": {
+          "speaker": "DILAN",
+          "text": "Nem em mim. Aqui não é o que você pensa. Foi um erro o Jaden te trazer.",
+          "next": "OPT_REGRAS"
+        },
+        "OPT_VITAMINAS": {
+          "speaker": "DILAN",
+          "text": "Você pergunta demais. Fica quieta — eu só mirei e atirei.",
+          "next": "OPT_REGRAS"
+        },
+        "OPT_REGRAS": {
+          "speaker": "DILAN",
+          "text": "Você tem 40 minutos lá fora. Não pode fugir. E é proibida de entrar na Ala Leste, Ala Oeste e no Galpão.",
+          "effects": {
+            "add_evidences": [
+              "K2"
+            ],
+            "set_flags": {
+              "FLAG_REGRAS_RECEBIDAS": true
+            },
+            "set_clock": 40
+          },
+          "next": "END"
+        }
+      }
+    },
+    "DLG_R04_SERINGA_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Frasco sem rótulo e seringa usada. 'Vitaminas' dadas sob vigilância armada."
+        }
+      ]
+    },
+    "DLG_R04_SERINGA_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Não vou tocar nisso de novo."
+        }
+      ]
+    },
+    "DLG_R04_PORTA_BLOQUEADA": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Ainda não fui liberada para descer."
+        }
+      ]
+    },
+    "DLG_R05_OESTE_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Ala Oeste. Madeira pesada e fechadura reforçada por fora."
+        }
+      ]
+    },
+    "DLG_R05_OESTE_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Trancada. E eu só tenho quarenta minutos."
+        }
+      ]
+    },
+    "DLG_R05_LESTE_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Ala Leste. Silêncio absoluto do outro lado — frio demais para um dia quente."
+        }
+      ]
+    },
+    "DLG_R05_LESTE_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Nem se move. Dilan não blefou sobre as áreas proibidas."
+        }
+      ]
+    },
+    "DLG_R05_ESCADA_FINAL": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Subir não muda nada. Preciso entender o que acabei de descobrir."
+        }
+      ]
+    },
+    "EVT_R05_PORTA_TRANCADA_FINAL": {
+      "type": "event",
+      "sfx": "SFX_HEAVY_LOCK_RATTLE",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Trancada por fora. Ele não me protegeu — ele me engaiolou."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Os dentes. As vitaminas. A falta de gado. O aviso do Mark..."
+        }
+      ],
+      "effects": {
+        "set_flags": {
+          "FLAG_DEMO_FIM": true
+        },
+        "trigger_cutscene": "ENDING_CLIFFHANGER"
+      }
+    },
+    "EVT_R06_EXAMINAR_AMARINA": {
+      "type": "event",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Ela usa um aparelho auditivo sob a touca. Chamar pelas costas não vai adiantar."
+        }
+      ],
+      "effects": {
+        "set_flags": {
+          "FLAG_AMARINA_EXAMINADA": true
+        }
+      }
+    },
+    "DLG_R06_AMARINA_ROUTER": {
+      "type": "conditional_event",
+      "condition": "FLAG_AMARINA_EXAMINADA == true",
+      "if_false": {
+        "lines": [
+          {
+            "speaker": "TEREZA",
+            "text": "Com licença! ...Nada. Ela nem virou. Tem alguma coisa errada."
+          }
+        ]
+      },
+      "if_true": {
+        "lines": [
+          {
+            "speaker": "TEREZA",
+            "text": "Oi! Cheguei ontem. Sou Tereza."
+          },
+          {
+            "speaker": "AMARINA",
+            "text": "Desculpa, não te ouvi chegar! Sou Amarina, e aquele na sombra é o Joseph."
+          },
+          {
+            "speaker": "TEREZA",
+            "text": "Como vocês descontaminam a água daqui? Fervura não tira Estrôncio-90."
+          },
+          {
+            "speaker": "AMARINA",
+            "text": "Meu marido, o Caleb, trabalha com o Dilan numa estação reformada fora daqui."
+          },
+          {
+            "speaker": "AMARINA",
+            "text": "Mas não faz perguntas demais em voz alta, Tereza. Aqui o silêncio vale mais."
+          }
+        ],
+        "effects": {
+          "set_flags": {
+            "FLAG_AMARINA_FALOU": true
+          },
+          "clock_delta": -10
+        }
+      }
+    },
+    "DLG_R06_JOSEPH_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "A única criança em toda a fazenda. Uma exceção comprada a serviço da guarda."
+        }
+      ]
+    },
+    "DLG_R06_JOSEPH_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Melhor deixar o menino em paz na sombra."
+        }
+      ]
+    },
+    "EVT_R06_AUDIT_CERCADO": {
+      "type": "event",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Poucos animais, nenhum filhote. Só corte de emergência."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "A conta de proteína dessa fazenda simplesmente não fecha."
+        }
+      ],
+      "effects": {
+        "set_flags": {
+          "FLAG_CERCADO_VISTO": true
+        }
+      }
+    },
+    "DLG_R06_TRIAGEM_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Foi aqui que o Geiger disparou nas minhas botas. Há papéis rasgados perto do descarte."
+        }
+      ]
+    },
+    "EVT_R06_COLETAR_FICHA": {
+      "type": "event",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Uma ficha de protocolo rasgada: 'Pulseira Amarela — ciclo de vitaminas — transferência ao Galpão'."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Transferência... para o mesmo galpão que o Dilan me proibiu de chegar perto."
+        }
+      ],
+      "effects": {
+        "add_items": [
+          "ITEM_FICHA_TRIAGEM"
+        ],
+        "add_evidences": [
+          "K3"
+        ],
+        "set_flags": {
+          "FLAG_PATIO_AUDITADO": true
+        },
+        "clock_delta": -10
+      }
+    },
+    "DLG_R06_GALPAO_EXAM": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Grande o bastante para caber todo mundo da fazenda. E fechado sob sol de rachar."
+        }
+      ]
+    },
+    "DLG_R06_GALPAO_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Guardas armados no perímetro. Se eu tentar abrir, não saio viva."
+        }
+      ]
+    },
+    "EVT_R06_VER_JADEN_MAO": {
+      "type": "event",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Jaden... encostado no galpão, sorrindo e girando uma faca."
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "A mão dele está enfaixada, ainda manchada de sangue fresco. Quem fez isso com ele?"
+        }
+      ],
+      "effects": {
+        "add_evidences": [
+          "K4"
+        ],
+        "set_flags": {
+          "FLAG_JADEN_VISTO": true
+        },
+        "clock_delta": -10
+      }
+    },
+    "DLG_R06_JADEN_INT": {
+      "type": "linear",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Nem pensar. Preciso voltar para dentro agora."
+        }
+      ]
+    },
+    "EVT_R06_VER_DILAN_JANELA": {
+      "type": "event",
+      "lines": [
+        {
+          "speaker": "TEREZA",
+          "text": "Um par de olhos na janela do segundo andar. Dilan não me deixou sozinha — ele está vigiando."
+        }
+      ]
+    },
+    "EVT_R06_CONFRONTO_MARK_DILAN": {
+      "type": "event",
+      "sfx": "SFX_DOOR_SLAM_LOCK",
+      "lines": [
+        {
+          "speaker": "MARK",
+          "text": "Ei! Não enxerga, não, insolente?!"
+        },
+        {
+          "speaker": "TEREZA",
+          "text": "Me solta, seu louco!"
+        },
+        {
+          "speaker": "DILAN",
+          "text": "O que pensa que está fazendo, trabalhador? Importunando nossa hóspede?"
+        },
+        {
+          "speaker": "MARK",
+          "text": "Hóspede de merda! Fica sabendo, garota: você não fica por muito tempo, assim como os outros."
+        },
+        {
+          "speaker": "DILAN",
+          "text": "Pra dentro. Agora."
+        },
+        {
+          "speaker": "DILAN",
+          "text": "[Do lado de fora] O primeiro que tentar entrar antes do anoitecer é ameaça à jovem!"
+        }
+      ],
+      "effects": {
+        "add_evidences": [
+          "K5"
+        ],
+        "set_flags": {
+          "FLAG_PORTA_TRANCADA": true
+        },
+        "set_clock": 0,
+        "transition_room": "R05_CORREDOR"
+      }
+    }
+  }
+}

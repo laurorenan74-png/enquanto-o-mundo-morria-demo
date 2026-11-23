@@ -1,0 +1,1239 @@
+{
+  "schema_version": "1.0.0",
+  "sprint": "SPRINT_2_ATMOSPHERIC_ROOMS_SPEC",
+  "rendering_contract": {
+    "viewport": {
+      "width": 320,
+      "height": 180
+    },
+    "pixel_art": true,
+    "integer_scaling": true,
+    "depth_scale_formula": "scale(y) = scale_min + ((clamp(y, y_min, y_max) - y_min) / (y_max - y_min)) * (scale_max - scale_min)",
+    "ui_safe_zones": {
+      "top_hud_bar": {
+        "y_min": 0,
+        "y_max": 16
+      },
+      "bottom_subtitle_band": {
+        "y_min": 152,
+        "y_max": 180
+      }
+    },
+    "interaction_verbs": {
+      "left_click": "WALK_OR_INTERACT",
+      "right_click": "EXAMINE",
+      "highlight_key": "TAB_OR_SPACE"
+    }
+  },
+  "rooms": [
+    {
+      "id": "R01_BARRACA",
+      "name": "Barraca Central de Sobrevivência",
+      "act": "ACT_1",
+      "time_of_day": "10:30 AM",
+      "world_size": {
+        "width": 320,
+        "height": 180
+      },
+      "scrolling": false,
+      "atmosphere": {
+        "mood": "Claustrofobia seca, exaustão, luz cortante por rasgos na lona",
+        "palette_hex": [
+          "#1C1B1A",
+          "#383530",
+          "#5C564A",
+          "#8A8170",
+          "#B8B09C",
+          "#D6CFB8"
+        ],
+        "lighting_layers": [
+          {
+            "type": "light_shafts",
+            "origin": [
+              140,
+              22
+            ],
+            "color": "#D6CFB8",
+            "alpha": 0.22
+          },
+          {
+            "type": "particles_dust",
+            "density": "low",
+            "drift": "down_right"
+          },
+          {
+            "type": "vignette",
+            "strength": 0.45
+          }
+        ],
+        "audio": {
+          "ambient_loop": "SFX_AMB_WIND_CANVAS",
+          "footstep_surface": "dirt"
+        }
+      },
+      "walkable_polygon": [
+        [
+          52,
+          132
+        ],
+        [
+          268,
+          132
+        ],
+        [
+          292,
+          164
+        ],
+        [
+          28,
+          164
+        ]
+      ],
+      "depth_scale": {
+        "y_min": 132,
+        "y_max": 164,
+        "scale_min": 0.88,
+        "scale_max": 1.05
+      },
+      "spawns": {
+        "default": [
+          155,
+          148
+        ]
+      },
+      "hotspots": [
+        {
+          "id": "HS_VIDRO_QUEBRADO",
+          "label": "Vidro quebrado",
+          "type": "object",
+          "bounds": [
+            64,
+            108,
+            28,
+            22
+          ],
+          "walk_to": [
+            84,
+            138
+          ],
+          "facing": "left",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N01"
+          ],
+          "interactions": {
+            "examine": "DLG_R01_VIDRO_EXAM",
+            "interact": "DLG_R01_VIDRO_INT"
+          }
+        },
+        {
+          "id": "HS_MOCHILA_VELHA",
+          "label": "Mochila velha",
+          "type": "object",
+          "bounds": [
+            196,
+            118,
+            34,
+            24
+          ],
+          "walk_to": [
+            190,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "FLAG_KIT_PRONTO == false",
+          "linked_dag_nodes": [
+            "N01"
+          ],
+          "interactions": {
+            "examine": "DLG_R01_MOCHILA_EXAM",
+            "interact": "EVT_R01_PEGAR_MOCHILA"
+          }
+        },
+        {
+          "id": "HS_AMARRAS_BARRACA",
+          "label": "Amarras da lona",
+          "type": "object",
+          "bounds": [
+            238,
+            68,
+            36,
+            58
+          ],
+          "walk_to": [
+            244,
+            136
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N01"
+          ],
+          "interactions": {
+            "examine": "DLG_R01_AMARRAS_EXAM",
+            "interact": "EVT_R01_DESAMARRAR"
+          }
+        },
+        {
+          "id": "HS_SAIDA_LESTE",
+          "label": "Abertura (Leste)",
+          "type": "exit",
+          "bounds": [
+            274,
+            52,
+            42,
+            92
+          ],
+          "walk_to": [
+            276,
+            144
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "target_room": "R02_FLORES",
+          "requires": "FLAG_KIT_PRONTO == true",
+          "blocked_dialogue": "DLG_R01_SAIDA_BLOQUEADA",
+          "linked_dag_nodes": [
+            "N02"
+          ]
+        }
+      ],
+      "art_direction_prompt": "320x180 dark pixel art interior of a torn canvas survival tent, Hob's Barrow dithering style, shafts of pale dusty sunlight piercing holes in beige-gray fabric, cracked mirror shard on dirt floor left, worn backpack right, open flap showing gray wasteland east."
+    },
+    {
+      "id": "R02_FLORES",
+      "name": "Clareira no Vale do Giz",
+      "act": "ACT_1",
+      "time_of_day": "12:15 PM",
+      "world_size": {
+        "width": 320,
+        "height": 180
+      },
+      "scrolling": false,
+      "atmosphere": {
+        "mood": "Estranhamento (uncanny): lama cinzenta e barris corroídos contrastando com flores brancas e roxas saturadas",
+        "palette_hex": [
+          "#1B1F1E",
+          "#3D423E",
+          "#6B6E68",
+          "#9EA198",
+          "#E6E4DC",
+          "#7C4D8B"
+        ],
+        "lighting_layers": [
+          {
+            "type": "overcast_wash",
+            "color": "#8E948C",
+            "alpha": 0.18
+          },
+          {
+            "type": "wind_sway_shader",
+            "target_hotspot": "HS_FLORES_VALE"
+          },
+          {
+            "type": "vignette",
+            "strength": 0.35
+          }
+        ],
+        "audio": {
+          "ambient_loop": "SFX_AMB_VALE_COLD_WIND",
+          "footstep_surface": "mud"
+        }
+      },
+      "walkable_polygon": [
+        [
+          16,
+          126
+        ],
+        [
+          286,
+          126
+        ],
+        [
+          308,
+          168
+        ],
+        [
+          10,
+          168
+        ]
+      ],
+      "depth_scale": {
+        "y_min": 126,
+        "y_max": 168,
+        "scale_min": 0.78,
+        "scale_max": 1.02
+      },
+      "spawns": {
+        "default": [
+          40,
+          148
+        ],
+        "from_R01_BARRACA": [
+          36,
+          148
+        ]
+      },
+      "hotspots": [
+        {
+          "id": "HS_BARRIS_CORROIDOS",
+          "label": "Barris enferrujados",
+          "type": "object",
+          "bounds": [
+            78,
+            92,
+            48,
+            36
+          ],
+          "walk_to": [
+            102,
+            134
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "linked_dag_nodes": [],
+          "interactions": {
+            "examine": "DLG_R02_BARRIS_EXAM",
+            "interact": "DLG_R02_BARRIS_INT"
+          }
+        },
+        {
+          "id": "HS_FLORES_VALE",
+          "label": "Flores brancas e roxas",
+          "type": "object",
+          "bounds": [
+            168,
+            122,
+            46,
+            26
+          ],
+          "walk_to": [
+            162,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N03"
+          ],
+          "interactions": {
+            "examine": "DLG_R02_FLORES_EXAM",
+            "interact": "EVT_R02_TOCAR_FLORES_CAPTURA"
+          }
+        },
+        {
+          "id": "HS_MATA_DENSA",
+          "label": "Mata fechada",
+          "type": "object",
+          "bounds": [
+            244,
+            42,
+            74,
+            86
+          ],
+          "walk_to": [
+            248,
+            134
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N03"
+          ],
+          "interactions": {
+            "examine": "DLG_R02_MATA_EXAM",
+            "interact": "DLG_R02_MATA_INT"
+          }
+        }
+      ],
+      "art_direction_prompt": "320x180 moody pixel art post-apocalyptic clearing in chalky gray mud, rusted industrial barrels half-buried left, dense dark scrub forest right, stark cluster of healthy white and vivid purple wildflowers glowing unnaturally in center foreground, folk-horror overcast sky."
+    },
+    {
+      "id": "R03_CABANA",
+      "name": "Cabana de Patrulha (Travessia)",
+      "act": "ACT_1",
+      "time_of_day": "16:40 PM",
+      "world_size": {
+        "width": 320,
+        "height": 180
+      },
+      "scrolling": false,
+      "atmosphere": {
+        "mood": "Tensão armada, interior rústico sépia, iluminação dura de janela lateral",
+        "palette_hex": [
+          "#14110E",
+          "#2E241C",
+          "#524030",
+          "#7D654C",
+          "#B59A72",
+          "#C9A832"
+        ],
+        "lighting_layers": [
+          {
+            "type": "window_keylight",
+            "origin": [
+              270,
+              56
+            ],
+            "color": "#C9A832",
+            "alpha": 0.2
+          },
+          {
+            "type": "vignette",
+            "strength": 0.55
+          }
+        ],
+        "audio": {
+          "ambient_loop": "SFX_AMB_CABIN_SILENCE",
+          "footstep_surface": "wood"
+        }
+      },
+      "walkable_polygon": [
+        [
+          48,
+          128
+        ],
+        [
+          268,
+          128
+        ],
+        [
+          290,
+          164
+        ],
+        [
+          32,
+          164
+        ]
+      ],
+      "depth_scale": {
+        "y_min": 128,
+        "y_max": 164,
+        "scale_min": 0.86,
+        "scale_max": 1.04
+      },
+      "spawns": {
+        "default": [
+          88,
+          146
+        ]
+      },
+      "hotspots": [
+        {
+          "id": "HS_NPC_DILAN",
+          "label": "Dilan",
+          "type": "npc",
+          "bounds": [
+            208,
+            72,
+            34,
+            68
+          ],
+          "walk_to": [
+            182,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N04",
+            "N05"
+          ],
+          "interactions": {
+            "examine": "DLG_R03_DILAN_EXAM",
+            "interact": "DLG_R03_DILAN_TREE"
+          }
+        },
+        {
+          "id": "HS_MOCHILA_MESA",
+          "label": "Meus pertences",
+          "type": "object",
+          "bounds": [
+            108,
+            102,
+            28,
+            20
+          ],
+          "walk_to": [
+            116,
+            134
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "linked_dag_nodes": [],
+          "interactions": {
+            "examine": "DLG_R03_MOCHILA_EXAM",
+            "interact": "DLG_R03_MOCHILA_INT"
+          }
+        },
+        {
+          "id": "HS_CONTADOR_GEIGER",
+          "label": "Contador Geiger",
+          "type": "object",
+          "bounds": [
+            140,
+            104,
+            22,
+            16
+          ],
+          "walk_to": [
+            148,
+            134
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N05"
+          ],
+          "interactions": {
+            "examine": "DLG_R03_GEIGER_EXAM",
+            "interact": "DLG_R03_GEIGER_INT",
+            "use_item": {
+              "ITEM_FLOR_VENENOSA": "EVT_R03_DISPARAR_GEIGER"
+            }
+          }
+        },
+        {
+          "id": "HS_COLDRE_MESA",
+          "label": "Coldre com pistola cromada",
+          "type": "object",
+          "bounds": [
+            166,
+            104,
+            24,
+            16
+          ],
+          "walk_to": [
+            168,
+            134
+          ],
+          "facing": "up",
+          "visible_if": "!has_item('ITEM_PISTOLA_CROMADA')",
+          "linked_dag_nodes": [
+            "N06"
+          ],
+          "interactions": {
+            "examine": "DLG_R03_COLDRE_EXAM",
+            "interact": "EVT_R03_FURTAR_PISTOLA"
+          }
+        },
+        {
+          "id": "HS_PORTA_CABANA",
+          "label": "Porta de saída",
+          "type": "exit",
+          "bounds": [
+            264,
+            58,
+            36,
+            78
+          ],
+          "walk_to": [
+            262,
+            138
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "target_room": "R04_QUARTO",
+          "requires": "FLAG_SABE_TRAVESSIA == true && has_item('ITEM_PISTOLA_CROMADA')",
+          "blocked_dialogue": "DLG_R03_SAIDA_BLOQUEADA",
+          "triggers_cutscene": "INTERLUDE_1",
+          "linked_dag_nodes": [
+            "N06"
+          ]
+        }
+      ],
+      "art_direction_prompt": "320x180 atmospheric pixel art wooden patrol cabin interior, sepia shadows, rough timber table center holding a worn backpack, yellow Geiger counter box, and chrome pistol in leather holster, heavy wooden door right, tense warm-amber rim light."
+    },
+    {
+      "id": "R04_QUARTO",
+      "name": "Quarto do 2º Andar — Casarão",
+      "act": "ACT_2",
+      "time_of_day": "07:20 AM",
+      "world_size": {
+        "width": 320,
+        "height": 180
+      },
+      "scrolling": false,
+      "atmosphere": {
+        "mood": "Conforto suspeito: madeira rústica limpa que oculta confinamento",
+        "palette_hex": [
+          "#1F1814",
+          "#473529",
+          "#755842",
+          "#A88A6B",
+          "#D9C7A3",
+          "#E8B948"
+        ],
+        "lighting_layers": [
+          {
+            "type": "morning_window_glow",
+            "origin": [
+              154,
+              48
+            ],
+            "color": "#E8D9B5",
+            "alpha": 0.25
+          },
+          {
+            "type": "vignette",
+            "strength": 0.3
+          }
+        ],
+        "audio": {
+          "ambient_loop": "SFX_AMB_MANOR_QUIET",
+          "footstep_surface": "wood"
+        }
+      },
+      "walkable_polygon": [
+        [
+          42,
+          126
+        ],
+        [
+          274,
+          126
+        ],
+        [
+          296,
+          166
+        ],
+        [
+          26,
+          166
+        ]
+      ],
+      "depth_scale": {
+        "y_min": 126,
+        "y_max": 166,
+        "scale_min": 0.85,
+        "scale_max": 1.04
+      },
+      "spawns": {
+        "default": [
+          116,
+          146
+        ],
+        "from_R05_CORREDOR": [
+          258,
+          144
+        ]
+      },
+      "hotspots": [
+        {
+          "id": "HS_NPC_ODELIA",
+          "label": "Odélia",
+          "type": "npc",
+          "bounds": [
+            172,
+            74,
+            32,
+            64
+          ],
+          "walk_to": [
+            146,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "FLAG_ODELIA_VISTA == false",
+          "linked_dag_nodes": [
+            "N07"
+          ],
+          "interactions": {
+            "examine": "DLG_R04_ODELIA_EXAM",
+            "interact": "DLG_R04_ODELIA_TREE"
+          }
+        },
+        {
+          "id": "HS_NPC_DILAN_QUARTO",
+          "label": "Dilan",
+          "type": "npc",
+          "bounds": [
+            184,
+            70,
+            34,
+            68
+          ],
+          "walk_to": [
+            154,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "FLAG_ODELIA_VISTA == true && FLAG_REGRAS_RECEBIDAS == false",
+          "linked_dag_nodes": [
+            "N08"
+          ],
+          "interactions": {
+            "examine": "DLG_R04_DILAN_EXAM",
+            "interact": "DLG_R04_DILAN_TREE"
+          }
+        },
+        {
+          "id": "HS_CAMA_MADEIRA",
+          "label": "Cama de madeira",
+          "type": "object",
+          "bounds": [
+            54,
+            102,
+            78,
+            36
+          ],
+          "walk_to": [
+            98,
+            144
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "linked_dag_nodes": [],
+          "interactions": {
+            "examine": "DLG_R04_CAMA_EXAM",
+            "interact": "DLG_R04_CAMA_INT"
+          }
+        },
+        {
+          "id": "HS_JANELA_QUARTO",
+          "label": "Janela (Vista da Fazenda)",
+          "type": "object",
+          "bounds": [
+            126,
+            36,
+            56,
+            48
+          ],
+          "walk_to": [
+            152,
+            130
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "linked_dag_nodes": [],
+          "interactions": {
+            "examine": "DLG_R04_JANELA_EXAM",
+            "interact": "DLG_R04_JANELA_EXAM"
+          }
+        },
+        {
+          "id": "HS_ARMARIO_ROUPAS",
+          "label": "Armário simples",
+          "type": "object",
+          "bounds": [
+            18,
+            66,
+            34,
+            68
+          ],
+          "walk_to": [
+            54,
+            138
+          ],
+          "facing": "left",
+          "visible_if": "true",
+          "linked_dag_nodes": [],
+          "interactions": {
+            "examine": "DLG_R04_ARMARIO_EXAM",
+            "interact": "DLG_R04_ARMARIO_INT"
+          }
+        },
+        {
+          "id": "HS_BANDEJA_SERINGA",
+          "label": "Carrinho e seringa",
+          "type": "object",
+          "bounds": [
+            218,
+            108,
+            32,
+            26
+          ],
+          "walk_to": [
+            212,
+            140
+          ],
+          "facing": "right",
+          "visible_if": "FLAG_REGRAS_RECEBIDAS == true",
+          "linked_dag_nodes": [
+            "N08"
+          ],
+          "interactions": {
+            "examine": "DLG_R04_SERINGA_EXAM",
+            "interact": "DLG_R04_SERINGA_INT"
+          }
+        },
+        {
+          "id": "HS_PORTA_QUARTO",
+          "label": "Porta para o corredor",
+          "type": "exit",
+          "bounds": [
+            266,
+            58,
+            34,
+            78
+          ],
+          "walk_to": [
+            262,
+            138
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "target_room": "R05_CORREDOR",
+          "requires": "FLAG_REGRAS_RECEBIDAS == true",
+          "blocked_dialogue": "DLG_R04_PORTA_BLOQUEADA",
+          "linked_dag_nodes": [
+            "N09"
+          ]
+        }
+      ],
+      "art_direction_prompt": "320x180 pixel art rustic wooden bedroom in a large farmhouse, simple timber bed under bright morning window overlooking distant dry fields and barn, plain wardrobe left, stainless tray cart with breakfast and medical vial right, unsettlingly tidy."
+    },
+    {
+      "id": "R05_CORREDOR",
+      "name": "Hall e Escadaria do Casarão",
+      "act": "ACT_2",
+      "time_of_day": "08:00 AM / 08:40 AM",
+      "world_size": {
+        "width": 320,
+        "height": 180
+      },
+      "scrolling": false,
+      "atmosphere": {
+        "mood": "Arquitetura rígida, sombras compridas, única fresta de sol sob a porta principal",
+        "palette_hex": [
+          "#120F0D",
+          "#2B211B",
+          "#4F3D31",
+          "#78604D",
+          "#C4AF89",
+          "#F2E5C4"
+        ],
+        "lighting_layers": [
+          {
+            "type": "under_door_slit",
+            "origin": [
+              160,
+              128
+            ],
+            "color": "#F2E5C4",
+            "alpha": 0.4
+          },
+          {
+            "type": "vignette",
+            "strength": 0.5
+          }
+        ],
+        "audio": {
+          "ambient_loop": "SFX_AMB_HALL_CREAK",
+          "footstep_surface": "wood"
+        }
+      },
+      "walkable_polygon": [
+        [
+          36,
+          128
+        ],
+        [
+          284,
+          128
+        ],
+        [
+          306,
+          166
+        ],
+        [
+          14,
+          166
+        ]
+      ],
+      "depth_scale": {
+        "y_min": 128,
+        "y_max": 166,
+        "scale_min": 0.82,
+        "scale_max": 1.05
+      },
+      "spawns": {
+        "default": [
+          160,
+          146
+        ],
+        "from_R04_QUARTO": [
+          96,
+          134
+        ],
+        "from_R06_PATIO": [
+          160,
+          142
+        ]
+      },
+      "hotspots": [
+        {
+          "id": "HS_ESCADA_QUARTO",
+          "label": "Escada (2º Andar)",
+          "type": "exit",
+          "bounds": [
+            78,
+            32,
+            48,
+            92
+          ],
+          "walk_to": [
+            100,
+            132
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "target_room": "R04_QUARTO",
+          "requires": "FLAG_PORTA_TRANCADA == false",
+          "blocked_dialogue": "DLG_R05_ESCADA_FINAL",
+          "linked_dag_nodes": [
+            "N09"
+          ]
+        },
+        {
+          "id": "HS_PORTA_ALA_OESTE",
+          "label": "Porta — Ala Oeste (Proibida)",
+          "type": "object",
+          "bounds": [
+            16,
+            62,
+            34,
+            76
+          ],
+          "walk_to": [
+            48,
+            142
+          ],
+          "facing": "left",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N09"
+          ],
+          "interactions": {
+            "examine": "DLG_R05_OESTE_EXAM",
+            "interact": "DLG_R05_OESTE_INT"
+          }
+        },
+        {
+          "id": "HS_PORTA_ALA_LESTE",
+          "label": "Porta — Ala Leste (Proibida)",
+          "type": "object",
+          "bounds": [
+            270,
+            62,
+            34,
+            76
+          ],
+          "walk_to": [
+            268,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N09"
+          ],
+          "interactions": {
+            "examine": "DLG_R05_LESTE_EXAM",
+            "interact": "DLG_R05_LESTE_INT"
+          }
+        },
+        {
+          "id": "HS_PORTA_PRINCIPAL",
+          "label": "Porta Principal",
+          "type": "exit",
+          "bounds": [
+            140,
+            56,
+            42,
+            74
+          ],
+          "walk_to": [
+            160,
+            134
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "target_room": "R06_PATIO",
+          "requires": "FLAG_PORTA_TRANCADA == false",
+          "blocked_dialogue": "EVT_R05_PORTA_TRANCADA_FINAL",
+          "linked_dag_nodes": [
+            "N09",
+            "N14"
+          ]
+        }
+      ],
+      "art_direction_prompt": "320x180 gothic-rural pixel art wooden manor hallway, symmetrical composition, heavy front door center with harsh white sunlight bleeding under the threshold, locked East and West wing doors flanking both edges, wooden staircase descending left-center."
+    },
+    {
+      "id": "R06_PATIO",
+      "name": "Pátio, Lavouras e Perímetro da Fazenda",
+      "act": "ACT_2",
+      "time_of_day": "08:05 AM — 08:40 AM",
+      "world_size": {
+        "width": 480,
+        "height": 180
+      },
+      "scrolling": true,
+      "atmosphere": {
+        "mood": "Sol escaldante, ondulação térmica, vigilância constante em espaço aberto",
+        "palette_hex": [
+          "#241C16",
+          "#544132",
+          "#8C6F52",
+          "#BD9B73",
+          "#DFC69B",
+          "#4B6342",
+          "#9E3B33"
+        ],
+        "lighting_layers": [
+          {
+            "type": "heat_haze_shader",
+            "intensity": 0.12
+          },
+          {
+            "type": "harsh_sun_glare",
+            "origin": [
+              240,
+              10
+            ],
+            "color": "#F5E7C4",
+            "alpha": 0.16
+          },
+          {
+            "type": "vignette",
+            "strength": 0.25
+          }
+        ],
+        "audio": {
+          "ambient_loop": "SFX_AMB_FARM_HEAT_CICADAS",
+          "footstep_surface": "gravel"
+        }
+      },
+      "walkable_polygon": [
+        [
+          18,
+          128
+        ],
+        [
+          462,
+          128
+        ],
+        [
+          474,
+          168
+        ],
+        [
+          8,
+          168
+        ]
+      ],
+      "depth_scale": {
+        "y_min": 128,
+        "y_max": 168,
+        "scale_min": 0.72,
+        "scale_max": 1.02
+      },
+      "spawns": {
+        "default": [
+          64,
+          146
+        ],
+        "from_R05_CORREDOR": [
+          64,
+          146
+        ]
+      },
+      "hotspots": [
+        {
+          "id": "HS_SAIDA_CASARAO",
+          "label": "Varanda do Casarão",
+          "type": "exit",
+          "bounds": [
+            14,
+            58,
+            56,
+            74
+          ],
+          "walk_to": [
+            52,
+            140
+          ],
+          "facing": "left",
+          "visible_if": "true",
+          "target_room": "R05_CORREDOR",
+          "requires": "true",
+          "override_event_if": {
+            "condition": "FLAG_JADEN_VISTO == true",
+            "event": "EVT_R06_CONFRONTO_MARK_DILAN"
+          },
+          "linked_dag_nodes": [
+            "N13"
+          ]
+        },
+        {
+          "id": "HS_JANELA_SUPERIOR",
+          "label": "Janela do 2º andar",
+          "type": "object",
+          "bounds": [
+            28,
+            18,
+            30,
+            26
+          ],
+          "walk_to": [
+            74,
+            146
+          ],
+          "facing": "up",
+          "visible_if": "FLAG_AMARINA_FALOU == true && FLAG_PATIO_AUDITADO == true",
+          "linked_dag_nodes": [
+            "N12"
+          ],
+          "interactions": {
+            "examine": "EVT_R06_VER_DILAN_JANELA",
+            "interact": "EVT_R06_VER_DILAN_JANELA"
+          }
+        },
+        {
+          "id": "HS_NPC_AMARINA",
+          "label": "Trabalhadora de roupas coloridas",
+          "type": "npc",
+          "bounds": [
+            148,
+            84,
+            30,
+            52
+          ],
+          "walk_to": [
+            134,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N10"
+          ],
+          "interactions": {
+            "examine": "EVT_R06_EXAMINAR_AMARINA",
+            "interact": "DLG_R06_AMARINA_ROUTER"
+          }
+        },
+        {
+          "id": "HS_NPC_JOSEPH",
+          "label": "Menino na sombra",
+          "type": "npc",
+          "bounds": [
+            196,
+            102,
+            22,
+            30
+          ],
+          "walk_to": [
+            188,
+            142
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [],
+          "interactions": {
+            "examine": "DLG_R06_JOSEPH_EXAM",
+            "interact": "DLG_R06_JOSEPH_INT"
+          }
+        },
+        {
+          "id": "HS_CERCADO_ANIMAIS",
+          "label": "Cercado de animais",
+          "type": "object",
+          "bounds": [
+            236,
+            92,
+            62,
+            38
+          ],
+          "walk_to": [
+            266,
+            138
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N11"
+          ],
+          "interactions": {
+            "examine": "EVT_R06_AUDIT_CERCADO",
+            "interact": "EVT_R06_AUDIT_CERCADO"
+          }
+        },
+        {
+          "id": "HS_LATERAL_TRIAGEM",
+          "label": "Barraca de Triagem",
+          "type": "object",
+          "bounds": [
+            314,
+            78,
+            66,
+            52
+          ],
+          "walk_to": [
+            344,
+            138
+          ],
+          "facing": "up",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N11"
+          ],
+          "interactions": {
+            "examine": "DLG_R06_TRIAGEM_EXAM",
+            "interact": "EVT_R06_COLETAR_FICHA"
+          }
+        },
+        {
+          "id": "HS_FACHADA_GALPAO",
+          "label": "Galpão (Proibido)",
+          "type": "object",
+          "bounds": [
+            392,
+            46,
+            82,
+            86
+          ],
+          "walk_to": [
+            396,
+            140
+          ],
+          "facing": "right",
+          "visible_if": "true",
+          "linked_dag_nodes": [
+            "N12"
+          ],
+          "interactions": {
+            "examine": "DLG_R06_GALPAO_EXAM",
+            "interact": "DLG_R06_GALPAO_INT"
+          }
+        },
+        {
+          "id": "HS_NPC_JADEN_BATENTE",
+          "label": "Jaden (no batente)",
+          "type": "npc",
+          "bounds": [
+            404,
+            82,
+            26,
+            52
+          ],
+          "walk_to": [
+            376,
+            144
+          ],
+          "facing": "right",
+          "visible_if": "FLAG_AMARINA_FALOU == true && FLAG_PATIO_AUDITADO == true",
+          "linked_dag_nodes": [
+            "N12"
+          ],
+          "interactions": {
+            "examine": "EVT_R06_VER_JADEN_MAO",
+            "interact": "DLG_R06_JADEN_INT"
+          }
+        }
+      ],
+      "art_direction_prompt": "480x180 wide scrolling pixel art sunlit post-apocalyptic fortified farm compound, barbed-wire perimeter walls with wooden watch trenches in background, large wooden manor porch far left with second-floor window, dry irrigated crops with woman in colorful clothes and child in shade center-left, sparse livestock pen center, white medical triage tent center-right, imposing dark barn/shed far right under scorching ochre sun."
+    }
+  ]
+}
